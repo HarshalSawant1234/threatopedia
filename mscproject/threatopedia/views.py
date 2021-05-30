@@ -9,7 +9,7 @@ import socket
 # Create your views here.
 
 def home(request):
-	return render(request, '/home/harshal/Desktop/django-test/mscproject/threatopedia/templates/home.html')
+	return render(request, """/home/harshal/Desktop/django-test/mscproject/threatopedia/templates/home.html""")
 
 def result(request):
 	context = {}
@@ -33,7 +33,7 @@ def result(request):
 			context['vt_result'] = vt_result
 			context['network'] = network
 			context['country_vt'] = pc.countries(country_code_vt)
-			return render(request, '/home/harshal/Desktop/django-test/mscproject/threatopedia/templates/ip_result.html', context)
+			return render(request, """/home/harshal/Desktop/django-test/mscproject/threatopedia/templates/ip_result.html""", context)
 	except:
 		not_ip = True
 	if not_ip == True:
@@ -49,7 +49,7 @@ def result(request):
 			context['ibm_result'] = ibm_result
 			phish_result = 	url.is_phish(value)	
 			context['phistank_result'] = phish_result
-			return render(request, '/home/harshal/Desktop/django-test/mscproject/threatopedia/templates/url_result.html', context)
+			return render(request, """/home/harshal/Desktop/django-test/mscproject/threatopedia/templates/url_result.html""", context)
 		except:
 			not_url = True
 	if not_ip == True and not_url == True:
@@ -65,33 +65,8 @@ def result(request):
 			context['md5'] = md5
 			context['sha1'] = sha1
 			context['sha256'] = sha256
-			return render(request, '/home/harshal/Desktop/django-test/mscproject/threatopedia/templates/hash_result.html', context)
+			return render(request, """/home/harshal/Desktop/django-test/mscproject/threatopedia/templates/hash_result.html""", context)
 		except:
 			not_hash = True
 	if not_ip == True and not_url == True and not_hash == True:
-		return render(request, '/home/harshal/Desktop/django-test/mscproject/threatopedia/templates/error.html', context)
-
-def signin(request):
-	return render(request, '/home/harshal/Desktop/django-test/mscproject/threatopedia/templates/signin.html')
-
-def signup(request):
-	return render(request, '/home/harshal/Desktop/django-test/mscproject/threatopedia/templates/signup.html')
-
-def validate(request):
-	email = request.POST.get("email", None)
-	pwd = request.POST.get("pass", None)
-	result = dbcon.search_user(email, pwd)
-	if result is True:
-		return render(request, '/home/harshal/Desktop/django-test/mscproject/threatopedia/templates/home1.html')
-	else:
-		return render(request, '/home/harshal/Desktop/django-test/mscproject/threatopedia/templates/signin.html')
-	
-def register(request):
-	name = request.POST.get("name", None)
-	email = request.POST.get("email", None)
-	pwd = request.POST.get("pwd", None)
-	cnf = request.POST.get("cnf", None)
-	if pwd == cnf:
-		result = dbcon.create_user(name, email, pwd)
-	else:
-		return render(request, '/home/harshal/Desktop/django-test/mscproject/threatopedia/templates/signup.html')
+		return render(request, """/home/harshal/Desktop/django-test/mscproject/threatopedia/templates/error.html""", context)
