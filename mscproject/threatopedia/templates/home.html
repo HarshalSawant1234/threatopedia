@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>Threat-O-Pedia</title>
+	<style type="text/css">
+		#title{margin-top:150px;font-size:45px; font-family:"roboto"; text-align:center; color:grey}
+		#info_text{margin-top:10px;font-size:17px; font-family:"roboto"; text-align:center; color:grey}
+		#search_bar{height:40px;margin-top:20px;margin-bottom:9px;width:55%; margin-left: 22%}
+		#search_button{height:50px;margin-top:20px;width:20%;margin-left: 40%;background-color:grey; font-size:40px; font-family:"roboto"; text-align:center; color: white}
+		#footer{ margin-top: 19%; font-size: 12px; text-align: center; color: black; font-family: "roboto"}
+	</style>
+</head>
+<body id="body">
+	<div>
+		<a href="home" style="text-align: left; padding-right: 15px; color: grey; font-size: 15px">How Threat-O-Pedia Works</a>
+		<a href="home" style="text-align: left; padding-left: 15px; padding-right: 15px; color: grey; font-size: 15px">About US</a>
+		<h1 id="title">Threat-O-Pedia</h1>
+		<h3 id="info_text">Analyze suspicious files, URLs and IP Addresses to detect types of malware, automatically share them with the security community</h3>
+		<form action="result" method="POST">
+			{% csrf_token %}
+			<input id="search_bar" type="text" name="search_box" onfocus="this.value=''" placeholder="Search">
+			<input type="submit" value="Search" id="search_button">
+		</form>
+		<footer id="footer">
+			<p>By submitting data above, you are agreeing to the sharing of your Sample submission with the security community.
+			   Please do not submit any personal information; Threat-O-Pedia is not responsible for the contents of your submission.
+			</p>
+		</footer>
+	</div>
+</body>
+</html>
